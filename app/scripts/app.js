@@ -16,7 +16,8 @@ angular.module('maintenanceScheduler', [
   'maintenanceScheduler.controllers',
   'maintenanceScheduler.directives',
   'maintenanceScheduler.filters',
-  'restangular' 
+  'restangular',
+  'ui.calendar'
 ])
 
   // Application configuration.
