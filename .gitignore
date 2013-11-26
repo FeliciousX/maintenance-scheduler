@@ -1,13 +1,5 @@
-# Node modules folder.
-node_modules/
-
-# Temporary development folder.
-dev/
-
-# Build folder.
-dist/
-
-# Bower components folder.
-app/lib/
-
-
+node_modules
+dist
+.tmp
+.sass-cache
+app/bower_components

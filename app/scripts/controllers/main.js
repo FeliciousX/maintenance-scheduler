@@ -1,14 +1,10 @@
-// Main controller.
-angular.module('maintenanceScheduler.controllers').controller('MainCtrl', function() {
+'use strict';
 
-  // Awesome stuff.
-  this.awesome = [
-    'Yeoman',
-    'Grunt',
-    'Bower',
-    'AngularJS'
-  ];
-
-  // Return controller data.
-  return this;
-});
+angular.module('maintenenceSchedulerApp')
+  .controller('MainCtrl', function ($scope) {
+    $scope.awesomeThings = [
+      'HTML5 Boilerplate',
+      'AngularJS',
+      'Karma'
+    ];
+  });
