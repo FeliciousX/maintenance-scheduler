@@ -36,7 +36,14 @@ Installation
   ```
   grunt serve
   ```
-  
+
+5. The dev branch is where most updates goes to. Only stable updates gets pushed to master branch. Do not push to master branch until agreed upon by everyone.
+  ``` git
+  git checkout dev
+  ```
+
+6. Remember to always create a new branch to play with first and then merge.
+
 Happy Coding :D
 ---------------
 
