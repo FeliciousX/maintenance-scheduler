@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('maintenenceSchedulerApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('ErrCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
-      'Karma'
+      'test'
     ];
   });

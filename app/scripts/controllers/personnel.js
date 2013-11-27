@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('maintenenceSchedulerApp')
-  .controller('LoginCtrl', function ($scope) {
+  .controller('PersonnelCtrl', function ($scope) {
     $scope.model = {};
 
     /* config object */
@@ -10,7 +10,6 @@ angular.module('maintenenceSchedulerApp')
         height: 450,
         editable: true,
         header:{
-          // TODO: custom filters
           left: 'month basicWeek basicDay agendaWeek agendaDay',
           center: 'title',
           right: 'today prev,next'
@@ -24,6 +23,7 @@ angular.module('maintenenceSchedulerApp')
     $scope.model.eventSources = [
 
         // your event source
+        // TODO: make this dynamic
         {
             events: [ // put the array in the `events` property
                 {

@@ -1,22 +1,22 @@
 'use strict';
 
-describe('Controller: LoginCtrl', function () {
+describe('Controller: ErrCtrl', function () {
 
   // load the controller's module
   beforeEach(module('maintenenceSchedulerApp'));
 
-  var LoginCtrl,
+  var ErrCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    LoginCtrl = $controller('LoginCtrl', {
+    ErrCtrl = $controller('ErrCtrl', {
       $scope: scope
     });
   }));
 
-  it('should attach a list of events to the scope', function () {
-    expect(scope.model.eventSources.length).toBe(1);
+  it('should attach a list of awesomeThings to the scope', function () {
+    expect(scope.awesomeThings.length).toBe(3);
   });
 });
