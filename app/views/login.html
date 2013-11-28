@@ -1,26 +1,69 @@
+<!-- TODO: HIDE THIS DEV SECTION WHEN DONE WITH DEVELOPMENT PHASE! -->
+<button type="button btn-sm" class="btn btn-danger" data-toggle="collapse" data-target="#dev">
+  Developer's Navigation
+</button>
+<div id="dev" class="collapse">
+  <li><a ng-href="#/personnel">Personnel</a></li>
+  <li><a ng-href="#/admin">Admin</a></li>
+</div>
+<hr />
+<!-- End of dev section -->
+
 <div class="header">
 <!-- TODO: consider to have navbar or not. If yes, use directive -->
-  <ul class="nav nav-pills pull-right">
+<!-- Isaac suggests NO NAVBAR for Login page -->
+  <!-- <ul class="nav nav-pills pull-right">
     <li class="active"><a ng-href="#/login">Login</a></li>
     <li><a ng-href="#/personnel">Personnel</a></li>
     <li><a ng-href="#/admin">Admin</a></li>
-  </ul>
-  <h3 class="text-muted">Maintenance Scheduling System</h3>
+  </ul> -->
+  <h2 class="no-spacing">Maintenance Scheduling System <br/><small class="text-muted no-top-spacing">XYZ Sarawak Sdn. Bhd.</small></h2>
 </div>
 
-<div class="jumbotron">
-  <h1>Login</h1>
-  <form>
-    <p>
-      Username: <input type="text" ng-model="staff.username" />
-    </p>
-    <p>
-      Password: <input type="text" ng-model="staff.password" />
-    </p>
-  </form>
-</div>
+
+<form class="form-horizontal" role="form">
+  <fieldset>
+    <h2>Welcome! Please login to continue.</h2>
+    <br />
+    <div class="form-group">
+        <label for="username" class="col-sm-2 control-label">Username: </label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="username" placeholder="Staff Username" ng-model="staff.username" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">Password: </label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="Password" ng-model="staff.password" />
+        </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-offset-2">
+          <div class="col-sm-9">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Remember me
+              </label>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <button class="btn btn-link"><a href="recover_pass.php">Forgot Password?</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary btn-lg">Login</button>
+        
+      </div>
+    </div>
+  </fieldset>
+</form>
 
 <div class="footer">
-  <p>Your mom</p>
+  <p>Your mom says hi!</p>
   <!-- TODO: Might want to use a directive for footer -->
 </div>
