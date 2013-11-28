@@ -1,1 +1,18 @@
+<div class="header">
+<!-- TODO: Transform navbar into directive -->
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#/personnel">Home</a></li>
+    <li><a ng-href="#/manage_account">Manage Account</a></li>
+  </ul>
+  <!-- TODO: Make the user's name dynamic to change with account details -->
+  <h2 class="no-spacing">Maintenance Scheduling System <br/><small class="text-muted no-top-spacing">Welcome, User1234567890!</small></h2>
+</div>
+<h1>Your Schedule</h1>
+<br />
 <div ui-calendar="uiConfig.calendar" ng-model="model.eventSources" calendar="myCalendar">
+
+<!-- TODO: THIS FOOTER DOESN'T SHOW!! FIX IT!! -->
+<div class="footer">
+  <p>XYZ Sarawak Sdn. Bhd.</p>
+  <!-- TODO: Might want to use a directive for footer -->
+</div>
