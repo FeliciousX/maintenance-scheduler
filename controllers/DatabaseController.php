@@ -19,9 +19,11 @@ class DatabaseController
   }
   function getUserAccountList(){
     $query = 'SELECT * FROM  user_account'; 
+    return $this->query($query);
   }
   function fetchNotification(){
     $query = 'SELECT * FROM  notification'; 
+    return $this->query($query);
   }/*
     Add Schedule Task
   */

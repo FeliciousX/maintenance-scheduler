@@ -37,6 +37,23 @@ function authenticateUser(){
   }
 }
 
+
+
+
+function addUser(){
+  include '../controllers/DatabaseController.php';
+
+  $db_controller = new DatabaseController();
+  
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  $rank = $_POST['rank'];
+  $email = $_POST['email'];
+  $job_title = $_POST['job_title'];
+
+  $db_controller->addUserAccount($username,$password,$rank,$email,$job_title);
+  header("Location: ../views/adminView.php?addUser=1");
+}
 /*=====================================
 
               Main Function
@@ -53,6 +70,11 @@ if(!empty($_POST)){
 
       case 'logout':
         logOut();
+        break;
+
+      case 'add':
+        //AddUser
+        addUser();
         break;
       
     }

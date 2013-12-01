@@ -31,23 +31,24 @@
 
 
     <div class="tab-pane active" id="create">
-      <form>
+      <form action="../controllers/scheduleController.php" method="post">
         <fieldset>
           <legend>Create Task</legend>
 
           <label>Name</label>
-          <input type="text" placeholder="Enter Task Name">
+          <input type="text" placeholder="Enter Task Name" name="name">
 
           <label>Date</label>
-          <input type="text" placeholder="Enter Task Due Date">
+          <input type="date" placeholder="Enter Task Due Date" name="date">
 
 
           <label>Assigned Personnel</label>
-          <input type="text" placeholder="Enter Personnels Involved">
+          <input type="text" placeholder="Enter Personnels Involved" name="personnel">
 
           <label>Details</label>
-          <textarea rows="4" placeholder="Enter Task Details"></textarea>
-
+          <textarea rows="4" placeholder="Enter Task Details" name="desc"></textarea>
+          
+          <input type="hidden" name="type" value="add">
           <span class="help-block">Please fill in all the required information</span>
           <button type="submit" class="btn">Submit</button>
         </fieldset>
@@ -74,7 +75,7 @@
     <!-- View Schedule Tasks -->
     <div class="tab-pane" id="view">
       <div class="scrollspy">
-        
+
         <?php
 
           $schedule = $db_controller->getScheduleTaskList();

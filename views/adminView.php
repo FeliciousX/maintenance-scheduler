@@ -38,7 +38,27 @@
               ?>
             </div>
               
+              <?php
+              if(isset($_GET['addScheduleTask'])){
+                if($_GET['addScheduleTask'] == '1'){
 
+                  echo '<div class="alert alert-success">
+                          Schedule Task Successfully Added!
+                        </div>';
+                }else if($_GET['addScheduleTask'] == '0'){
+                 echo '<div class="alert alert-error">
+                          Add Schedule Task Operation Failed
+                      </div>';
+                    }
+                  }
+                if(isset($_GET['addUser'])){
+                  if($_GET['addUser'] == '1'){
+                    echo '<div class="alert alert-success">
+                            New User Successfully Added!
+                          </div>';
+                }
+              }
+              ?>
             
 
             <ul class="nav nav-tabs">

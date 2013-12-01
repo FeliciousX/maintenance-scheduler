@@ -30,25 +30,27 @@
 
 
     <div class="tab-pane active" id="create_user">
-      <form>
+      <form action="../controllers/UserAccountsController.php" method="post">
         <fieldset>
           <legend>Create New User Account</legend>
 
           <label>Username</label>
-          <input type="text" placeholder="Enter Username">
+          <input type="text" placeholder="Enter Username" name="username">
 
           <label>Password</label>
-          <input type="text" placeholder="Enter a password">
+          <input type="text" placeholder="Enter a password" name="password">
 
 
           <label>Rank</label>
-          <input type="text" placeholder="Enter a rank">
+          <input type="text" placeholder="Enter a rank" name="rank">
 
           <label>E-mail</label>
-          <input type="text" placeholder="Enter email">
+          <input type="text" placeholder="Enter email" name="email">
 
           <label>Job Title</label>
-          <input type="text" placeholder="Enter Job Title">
+          <input type="text" placeholder="Enter Job Title" name="job_title">
+
+          <input type="hidden" name="type" value="add">
 
           <span class="help-block">Please fill in all the required information</span>
           <button type="submit" class="btn">Submit</button>
@@ -73,16 +75,20 @@
 
 
 
-    <!-- View Schedule Tasks -->
+    <!-- View View User Accounts-->
     <div class="tab-pane" id="view_user">
       <div class="scrollspy">
         <?php
-
-
-          
+          $users = $db_controller->getUserAccountList();
+          foreach ($users as $user) {
+            echo '<div class="well">';
+            foreach ($user as $key => $value) {
+              echo "<p><strong>$key</strong>   :  $value</p>";
+            }
+            echo "</div></br>";
+          }
 
         ?>
-        View Users!
       </div>
     </div>
 

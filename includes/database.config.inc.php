@@ -57,9 +57,9 @@ if(function_exists(
 }
 
 //Telling the web browser to use utf-8 encoding
-header('Content-Type: text/html; charset=utf-8');
 
 if(!isset($_SESSION))
 {
     session_start();
+    header('Content-Type: text/html; charset=utf-8');
 }
