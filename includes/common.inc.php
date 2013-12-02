@@ -2,7 +2,8 @@
 
 include '../controllers/DatabaseController.php';
 
-$inc = '<link rel="stylesheet" href="../includes/bootstrap/css/bootstrap.min.css">
+$inc = '<link rel="stylesheet" href="../includes/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="../includes/main.css">
           <script src="../includes/bootstrap/js/jquery.js"></script>
         ';
 

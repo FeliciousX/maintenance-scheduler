@@ -27,14 +27,14 @@
         <body>          
         <div class="container-narrow">
             <div class="well">
-              <p>Admin</p>
+              <p><?php echo $_SESSION['user']['job_title'];?></p>
               <form action="../controllers/UserAccountsController.php" method="post">
                 <input type="hidden" name="type" value="logout">
                 <input type="submit" class="btn btn-primary" value="logout" style="display: block;float: right;">
               </form>
 
               <?php
-              echo "<p>Welcome <strong> ".$_SESSION['user']['username']."</strong></p>";
+              echo "<p>Welcome <strong> ".$_SESSION['user']['username']."!</strong></p>";
               ?>
             </div>
               
