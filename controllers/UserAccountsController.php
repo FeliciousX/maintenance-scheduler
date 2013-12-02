@@ -89,7 +89,20 @@ if(!empty($_POST)){
     }
 }
 
+if(!empty($_GET)){
+  if(!isset($_SESSION)){
+    session_start();
+  }
+  if(isset($_GET['removeUser'])){
+    $user_id = $_GET['removeUser'];
+    include '../controllers/DatabaseController.php';
+    $db_controller = new DatabaseController();
+    
+    $db_controller->removeUser($user_id);
 
+    header("Location: ../views/adminView.php?removeUser=1");
+  }
+}
 
 
 function logOut(){

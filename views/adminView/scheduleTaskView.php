@@ -76,12 +76,11 @@
             }
             echo '<input type="hidden" name = "type" value = "edit">';
             echo "<div class=\"form-actions\">
-            <a class = \"btn btn-danger\" id=\"remove\"> Remove </a>
+            <a class = \"btn btn-danger\" id=\"remove\" href=\"../controllers/scheduleController.php?removeSchedule=".$task['task_id']."\"> Remove </a>
             <a class = \"btn btn-primary\" id=\"edit\" onclick=\"editForm(" . $task['task_id'] . ")\"> Edit </a>
             </div></form></div></br>";
           }
 
-          echo json_encode($schedule);
         ?>
       </div>
     </div>

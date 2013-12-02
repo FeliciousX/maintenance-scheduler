@@ -106,13 +106,29 @@ if(!empty($_POST)){
       case 'edit':
         echo json_encode($_POST);
         $scheduleCtrl->editSchedule();
-        //
         break;
 
       case 'remove':
         break;
 
     }
+}
+if(!empty($_GET)){
+  if(!isset($_SESSION)){
+    session_start();
+  }
+  if(isset($_GET['removeSchedule'])){
+    $task_id = $_GET['removeSchedule'];
+
+    for ($i=0; $i < sizeof($_SESSION['schedule_task']); $i++) { 
+      if($_SESSION['schedule_task'][$i]['task_id'] == $task_id){
+        unset($_SESSION['schedule_task'][$i]);
+        break;
+      }
+    }
+
+    header("Location: ../views/adminView.php?removeScheduleTask=1");
+  }
 }
 
 

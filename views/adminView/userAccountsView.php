@@ -73,12 +73,17 @@
       <div class="scrollspy">
         <?php
           $users = $db_controller->getUserAccountList();
+
           foreach ($users as $user) {
             echo '<div class="well">';
+             echo '<form id="u' . $user['user_id'] . '" action="../controllers/UserAccountsController.php" method="post">';
             foreach ($user as $key => $value) {
-              echo "<p><strong>$key</strong>   :  $value</p>";
+              echo "<p><strong>$key</strong>   : " . ' <input type="text" class="form-control" value ="'. $value .'" name = "'.$key.'" readonly></p>';
             }
-            echo "</div></br>";
+            echo "<div class=\"form-actions\">
+            <a class = \"btn btn-danger\" id=\"remove\" href=\"../controllers/UserAccountsController.php?removeUser=".$user['user_id'] ."\"> Remove </a>
+            <a class = \"btn btn-primary\" id=\"edit\" onclick=\"editForm(u".  $user['user_id'] . ");\"> Edit </a>
+            </div></form></div></br>";
           }
 
         ?>

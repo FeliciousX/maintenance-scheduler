@@ -68,7 +68,29 @@
                             Schedule Task Save Failed!
                           </div>';   
                   }
-              }
+                }
+                if(isset($_GET['removeScheduleTask'])){
+                  if($_GET['removeScheduleTask'] == '1'){
+                    echo '<div class="alert alert-success">
+                            Schedule Task Removed!
+                          </div>';
+                  }else if($_GET['removeScheduleTask'] == '0'){
+                    echo '<div class="alert alert-error">
+                            Schedule Task Remove Failed!
+                          </div>';   
+                  }
+                }
+                if(isset($_GET['removeUser'])){
+                  if($_GET['removeUser'] == '1'){
+                    echo '<div class="alert alert-success">
+                            User Account Removed!
+                          </div>';
+                  }else if($_GET['removeUser'] == '0'){
+                    echo '<div class="alert alert-error">
+                            Use Account Remove Failed!
+                          </div>';   
+                  }
+                }
               ?>
             
 
@@ -158,6 +180,9 @@
               $("#" + taskId).submit();
             }
 
+            function remove(taskId){
+
+            }
             </script>
 
             <script src="../includes/bootstrap/js/bootstrap.min.js"></script>
