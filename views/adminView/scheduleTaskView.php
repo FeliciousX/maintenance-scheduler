@@ -72,7 +72,7 @@
             echo '<div class="well">';
             echo '<form id="' . $task['task_id'] . '" action="../controllers/scheduleController.php" method="post">';
             foreach ($task as $key => $value) {
-              echo '<p><strong>'.$key.'</strong>   :  <input type="text" value ="'. $value .'" name = "'.$key.'" readonly></p>';
+              echo '<p><strong>'.$key.'</strong>   :  <input type="text" class="form-control" value ="'. $value .'" name = "'.$key.'" readonly></p>';
             }
             echo '<input type="hidden" name = "type" value = "edit">';
             echo "<div class=\"form-actions\">
