@@ -1,44 +1,5 @@
 
 
-<!-- <div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#/login">Login</a></li>
-    <li><a ng-href="#/personnel">Personnel</a></li>
-    <li><a ng-href="#/admin">Admin</a></li>
-  </ul>
-  <h3 class="text-muted">Maintenance Scheduling System</h3>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="panel panel-default" id="forms">
-        <div class="panel-heading">Welcome
-        </div>
-        <div class="panel-body">
-          <form action="../controllers/UserAccountsController.php" method="post" id = "loginForm">
-            <fieldset>
-              <legend>Login</legend>
-
-          <div class="panel-body"> -->
-            <!-- 
-              <div class="form-group">
-                <label for="exampleInputEmail">Username</label>
-                <input type="username" class="form-control" id="exampleInputUsername" placeholder="Enter username" name="username">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name="password">
-                <input type="hidden" value="login" name= "type">
-              </div>
-              
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </fieldset>
-          </form>
-        </div>
-      </div>
-    </div>
-    </div> -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,16 +55,6 @@
     <h2>Welcome to the Maintenance Scheduling System!</h2>
   </div>
   
-
-
-
-
-
-
-
-
-
-
     <div class="container">
 
       <form class="form-signin" action="../controllers/UserAccountsController.php" method="post">
@@ -142,7 +93,6 @@
 <script>
 $('#inputPassword').keypress(function (e) {
   if (e.keyCode == 13) {
-
     document.forms["form-signin"].submit()
   }
 });

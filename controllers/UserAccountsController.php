@@ -23,8 +23,17 @@ function authenticateUser(){
 
     if ($data[0]["rank"] == 1) {
       $_SESSION['user'] = $data[0];
+
+      $query = "SELECT * FROM  schedule_task WHERE 1";
+      $data = ($db_controller->query($query, 1));
+      $id = $data[sizeof($data) - 1]['task_id'];
+      $_SESSION['schedule_task'] = $data;
+      $_SESSION['schedule']['last_id'] = $id; 
+
       header("Location: ../views/adminView.php");
+
     }else if($data[0]["rank"] == 2){
+
       $_SESSION['user'] = $data[0];
       header("Location: ../views/personnelView.php");
     }

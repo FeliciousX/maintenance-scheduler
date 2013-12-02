@@ -1,7 +1,4 @@
-<?php
 
-
-?>
 <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
 
 
@@ -70,7 +67,7 @@
 
 
 
-
+  
 
     <!-- View Schedule Tasks -->
     <div class="tab-pane" id="view">
@@ -78,20 +75,26 @@
 
         <?php
 
-          $schedule = $db_controller->getScheduleTaskList();
+          include '../controllers/scheduleController.php';
+          $schduleController = new scheduleController();
+
+          $schedule = $schduleController->getSchduleList();
 
           foreach ($schedule as $task) {
+
             echo '<div class="well">';
+            echo '<form id="' . $task['task_id'] . '" action="../controllers/scheduleController.php" method="post">';
             foreach ($task as $key => $value) {
-              echo "<p><strong>$key</strong>   :  $value</p>";
+              echo '<p><strong>'.$key.'</strong>   :  <input type="text" value ="'. $value .'" name = "'.$key.'" readonly></p>';
             }
+            echo '<input type="hidden" name = "type" value = "edit">';
             echo "<div class=\"form-actions\">
-            <button class = \"btn btn-danger\"> Remove </button>
-            <button class = \"btn btn-primary\"> Edit </button>
-            </div></div></br>";
+            <a class = \"btn btn-danger\" id=\"remove\"> Remove </a>
+            <a class = \"btn btn-primary\" id=\"edit\" onclick=\"editForm(" . $task['task_id'] . ")\"> Edit </a>
+            </div></form></div></br>";
           }
 
-
+          echo json_encode($schedule);
         ?>
       </div>
     </div>
@@ -99,7 +102,7 @@
 
 
   </div>
-
+ 
 
 
 

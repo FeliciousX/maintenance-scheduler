@@ -56,7 +56,18 @@
                     echo '<div class="alert alert-success">
                             New User Successfully Added!
                           </div>';
+                  }
                 }
+                if(isset($_GET['editScheduleTask'])){
+                  if($_GET['editScheduleTask'] == '1'){
+                    echo '<div class="alert alert-success">
+                            Schedule Task Saved!
+                          </div>';
+                  }else if($_GET['editScheduleTask'] == '0'){
+                    echo '<div class="alert alert-error">
+                            Schedule Task Save Failed!
+                          </div>';   
+                  }
               }
               ?>
             
@@ -87,10 +98,66 @@
 
             </div>
           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <script>
               $(function () {
                 $('#myTab a:last').tab('show');
               })
+            </script>
+
+           <script>
+
+            function editForm(taskId){
+              var content = $("#" + taskId).children();
+              var inputTexts = content.children(':text');
+              inputTexts.each( function(index) {
+                $(this).prop('readonly', false);
+              });
+              content.children("#edit").text(' Save ');
+              content.children("#edit").attr('onclick', 'saveForm(' + taskId + ')');
+              content.children("#edit").attr('id', 'save');
+
+            }
+
+            function saveForm(taskId) {
+              var content = $("#" + taskId).children();
+              var inputTexts = content.children(':text');
+              inputTexts.each( function(index) {
+                $(this).prop('readonly', true);
+              });
+
+              content.children("#save").text(' Edit ');
+              content.children("#save").attr('onclick', 'editForm(' + taskId + ')');
+              content.children("#save").attr('id', 'edit');
+              $("#" + taskId).submit();
+            }
+
             </script>
 
             <script src="../includes/bootstrap/js/bootstrap.min.js"></script>

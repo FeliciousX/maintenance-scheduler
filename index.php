@@ -1,14 +1,8 @@
 <?php
 
-//index .php
+// index .php
 echo 'hello';
 header("Location: views/loginView.php");
-
-
-
-
-
-
 
 
 /*
