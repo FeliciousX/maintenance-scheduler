@@ -59,7 +59,7 @@
           
           <div class="col-sm-5"> &nbsp; </div>
           <div class="col-sm-4">
-            <button type="submit" id="submit" class="btn btn-primary btn-block" disabled="disabled">Submit</button>
+            <button type="submit" name="submit" class="btn btn-primary btn-block" disabled="disabled">Submit</button>
           </div>
           <div class="col-sm-3"> &nbsp; </div>
         </fieldset>
@@ -91,6 +91,7 @@
 
 <script>
 var user = false, pass = false, email = false, job = false;
+
 function validateEmail() {
   var x = document.forms["createAccount"]["email"].value;
   var atpos=x.indexOf("@");
@@ -112,32 +113,32 @@ function validateEmail() {
     d.className = "form-group has-Error";
     email = false;
   }
-  checkSubmit();
+  checkAccountSubmit();
 }
 
 function validateUser() {
-  user = validate("username", "formUsername");
-  checkSubmit();
+  user = validate("createAccount", "username", "formUsername");
+  checkAccountSubmit();
 }
 
 function validatePass() {
-  pass = validate("password", "formPassword");
-  checkSubmit();
+  pass = validate("createAccount", "password", "formPassword");
+  checkAccountSubmit();
 }
 
 function validateJob() {
-  job = validate("job_title", "formJob");
-  checkSubmit();
+  job = validate("createAccount", "job_title", "formJob");
+  checkAccountSubmit();
 }
 
-function validate(field, form) {
-  if(validateEmpty(document.forms["createAccount"][field].value)) {
-    var d = document.getElementById(form);
+function validate(form, field, formGroup) {
+  if(validateEmpty(document.forms[form][field].value)) {
+    var d = document.getElementById(formGroup);
     d.className = "form-group has-Success";
     return true;
   }
   else {
-    var d = document.getElementById(form);
+    var d = document.getElementById(formGroup);
     d.className = "form-group has-Error";
     return false;
   }
@@ -154,12 +155,12 @@ function validateEmpty(x) {
   }
 }
 
-function checkSubmit() {
+function checkAccountSubmit() {
   if(user&&pass&&email&&job == true) {
-    document.getElementById("submit").disabled = false;
+    document.forms["createAccount"]["submit"].disabled = false;
   }
   else {
-    document.getElementById("submit").disabled = true;
+    document.forms["createAccount"]["submit"].disabled = true;
   }
 }
 </script>
