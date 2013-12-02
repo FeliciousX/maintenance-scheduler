@@ -27,8 +27,8 @@ class DatabaseController
   }/*
     Add Schedule Task
   */
-  function addScheduleTask($taskName, $taskDesc, $taskDue, $inv_mp){
-    $task_assigned = date('Y-m-d H:i:s');
+  function addScheduleTask($taskName, $taskDesc, $taskDue, $inv_mp, $task_assigned ){
+    
 
     $query = 'INSERT INTO schedule_task(task_name, task_description, task_assigned, task_due, involved_mp) VALUES (' .
      "'$taskName'" .', '."'$taskDesc'" .', '."'$task_assigned'" .', '."'$taskDue'" .', '."'$inv_mp'" . ')';
