@@ -16,11 +16,39 @@
               <div class="container-narrow">
                 <div class="well">
                   <p><?php echo $_SESSION['user']['job_title'];?></p>
-                  <form action="../controllers/UserAccountsController.php" method="post">
-                    <input type="hidden" name="type" value="logout">
-                    <input type="submit" class="btn btn-primary" value="logout" style="display: block;float: right;">
-                  </form>
+                  
+                  <div>
 
+                    <form action="../controllers/UserAccountsController.php" method="post">
+                      <input type="hidden" name="type" value="logout">
+                      <input type="submit" class="btn btn-primary" value="logout" style="display: block;float: right;">
+                    </form>
+    
+
+                    
+                    <div class="btn-group" style="display: block;float: right;">
+                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        Notification <span class="badge"><?php 
+                            include '../controllers/NotificationManager.php';
+                            echo sizeof(getNotificationsFor($_SESSION['user']['user_id']));
+                            ?> </span> <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                      <?php
+
+                            $notifications = getNotificationsFor($_SESSION['user']['user_id']);
+                            foreach ($notifications as $not) {
+                              echo '<li><a href="#">'. getNotification($not['task_id']).'</a></li>';
+                            }
+                      ?>
+                      </ul>
+                    </div>
+
+                  </div>
+  
+                        
+
+                  
                   <?php
                   echo "<p>Welcome <strong> ".$_SESSION['user']['username']."</strong></p>";
                   ?>
