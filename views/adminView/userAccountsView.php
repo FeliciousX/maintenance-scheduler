@@ -80,9 +80,10 @@
             foreach ($user as $key => $value) {
               echo "<p><strong>$key</strong>   : " . ' <input type="text" class="form-control" value ="'. $value .'" name = "'.$key.'" readonly></p>';
             }
+            echo '<input type="hidden" name = "type" value = "edit">';
             echo "<div class=\"form-actions\">
             <a class = \"btn btn-danger\" id=\"remove\" href=\"../controllers/UserAccountsController.php?removeUser=".$user['user_id'] ."\"> Remove </a>
-            <a class = \"btn btn-primary\" id=\"edit\" onclick=\"editForm(u".  $user['user_id'] . ");\"> Edit </a>
+            <a class = \"btn btn-primary\" id=\"edit\" onclick=\"editForm('u".  $user['user_id'] . "');\"> Edit </a>
             </div></form></div></br>";
           }
 

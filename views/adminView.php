@@ -34,6 +34,7 @@
               echo "<p>Welcome <strong> ".$_SESSION['user']['username']."!</strong></p>";
               ?>
               <div>
+
               <form action="../controllers/UserAccountsController.php" method="post">
                 <input type="hidden" name="type" value="logout">
                 <input type="submit" class="btn btn-primary" value="logout" style="display: block;float: right;">
@@ -120,6 +121,17 @@
                           </div>';   
                   }
                 }
+                if(isset($_GET['editUser'])){
+                  if($_GET['editUser'] == '1'){
+                    echo '<div class="alert alert-success">
+                            User Account Saved!
+                          </div>';
+                  }else if($_GET['editUser'] == '0'){
+                    echo '<div class="alert alert-error">
+                            Use Account Edit Failed!
+                          </div>';   
+                  }
+                }
               ?>
             
 
@@ -191,7 +203,7 @@
                 $(this).prop('readonly', false);
               });
               content.children("#edit").text(' Save ');
-              content.children("#edit").attr('onclick', 'saveForm(' + taskId + ')');
+              content.children("#edit").attr('onclick', 'saveForm(\'' + taskId + '\')');
               content.children("#edit").attr('id', 'save');
 
             }
@@ -204,7 +216,7 @@
               });
 
               content.children("#save").text(' Edit ');
-              content.children("#save").attr('onclick', 'editForm(' + taskId + ')');
+              content.children("#save").attr('onclick', 'editForm(\'' + taskId + '\')');
               content.children("#save").attr('id', 'edit');
               $("#" + taskId).submit();
             }
