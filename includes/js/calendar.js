@@ -7,27 +7,84 @@ function CalendarCtrl($scope) {
     var d = date.getDate();
     var m = date.getMonth();
     var y = date.getFullYear();
-    /* event source that pulls from google.com */
+
+    /* event source that pulls from google.com  for Malaysian Holidays */
     $scope.eventSource = {
-            url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
+            url: "https://www.google.com/calendar/feeds/en.malaysia%23holiday%40group.v.calendar.google.com/public/basic",
             className: 'gcal-event',           // an option!
-            currentTimezone: 'America/Chicago' // an option!
+            currentTimezone: 'Asia/Kuala_Lumpur' // an option!
     };
+
     /* event source that contains custom events on the scope */
     $scope.events = [
-      {title: 'All Day Event',start: new Date(y, m, 1)},
-      {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
-      {id: 999,title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false},
-      {id: 999,title: 'Repeating Event',start: new Date(y, m, d + 4, 16, 0),allDay: false},
-      {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
-      {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
+      {
+        id: '2DC',
+        title: 'All Day Event',
+        start: new Date(y, m, 1),
+        sys: '2DC',
+        className: ['orange'],
+        man: 2
+      },
+      {
+        id: '2DC',
+        title: 'Long Event',
+        start: new Date(y, m, d - 5),
+        end: new Date(y, m, d - 2),
+        sys: '2DC',
+        className: ['cyan'],
+        man: 2
+      },
+      {
+        id: '2MC',
+        title: 'Repeating Event',
+        start: new Date(y, m, d - 2, 16, 0),
+        sys: '2MC',
+        allDay: false,
+        man: 1
+      },
+      {
+        id: '2WM',
+        title: 'Repeating Event',
+        start: new Date(y, m, d + 4, 16, 0),
+        sys: '2WM',
+        allDay: false,
+        man: 3,
+      },
+      {
+        id: '2WM',
+        title: 'Birthday Party',
+        start: new Date(y, m, d + 1, 19, 0),
+        end: new Date(y, m, d + 1, 22, 30),
+        allDay: false,
+        sys: '2WM',
+        man: 2,
+      },
+      {
+        id: '2WM',
+        title: 'Click for Google',
+        start: new Date(y, m, 28),
+        end: new Date(y, m, 29),
+        url: 'http://google.com/',
+        sys: '2WM',
+        man: 1
+      }
     ];
+
+
     /* event source that calls a function on every view switch */
     $scope.eventsF = function (start, end, callback) {
       var s = new Date(start).getTime() / 1000;
       var e = new Date(end).getTime() / 1000;
       var m = new Date(start).getMonth();
-      var events = [{title: 'Feed Me ' + m,start: s + (50000),end: s + (100000),allDay: false, className: ['customFeed']}];
+      var events = [
+      {
+        title: 'Feed Me ' + m,
+        start: s + (50000),
+        end: s + (100000),
+        allDay: false,
+        className: ['silver']
+      }
+      ];
       callback(events);
     };
     /* alert on eventClick */
@@ -94,5 +151,25 @@ function CalendarCtrl($scope) {
       }
     };
     /* event sources array*/
-    $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
+    $scope.eventSources = [$scope.events, $scope.eventSource];
+
+    /* For filtering purposes on change select option */
+    $scope.filterSys = function () {
+      var canAdd = 0;
+      var i = 0;
+      angular.forEach($scope.events,function(value, key){
+        if($scope.events[key] === $scope.filter){
+          $scope.events.splice(key,1);
+          canAdd = 1;
+        }
+        i++;
+      });
+      if(canAdd === 0){
+        $scope.events.push($scope.filter);
+      }
+
+      
+      console.log($scope.events);
+      console.log($scope.filter);
+    }
 }
