@@ -63,6 +63,22 @@ function addUser(){
   $db_controller->addUserAccount($username,$password,$rank,$email,$job_title);
   header("Location: ../views/adminView.php?addUser=1");
 }
+
+function editUser(){
+  include '../controllers/DatabaseController.php';
+  $db_controller = new DatabaseController();
+  
+  $user_id = $_POST['user_id'];
+  $username = $_POST['username'];
+  $password = $_POST['user_password'];
+  $rank = $_POST['rank'];
+  $email = $_POST['email'];
+  $job_title = $_POST['job_title'];
+
+  $query ="UPDATE user_account SET user_id='$user_id',username='$username',user_password='$password',rank='$rank',email='$email',job_title='$job_title' WHERE user_id = '$user_id'";
+  $db_controller->query($query, 0);
+  header("Location: ../views/adminView.php?editUser=1");
+}
 /*=====================================
 
               Main Function
@@ -84,6 +100,11 @@ if(!empty($_POST)){
       case 'add':
         //AddUser
         addUser();
+        break;
+
+      case 'edit':
+        //AddUser
+        editUser();
         break;
       
     }

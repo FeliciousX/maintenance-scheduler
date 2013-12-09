@@ -28,15 +28,45 @@
         <div class="container-narrow">
             <div class="well">
               <p><?php echo $_SESSION['user']['job_title'];?></p>
+              
+              
+              <?php
+              echo "<p>Welcome <strong> ".$_SESSION['user']['username']."!</strong></p>";
+              ?>
+              <div>
+
               <form action="../controllers/UserAccountsController.php" method="post">
                 <input type="hidden" name="type" value="logout">
                 <input type="submit" class="btn btn-primary" value="logout" style="display: block;float: right;">
               </form>
 
-              <?php
-              echo "<p>Welcome <strong> ".$_SESSION['user']['username']."!</strong></p>";
-              ?>
+
+              <div class="btn-group" style="display: block;float: right;">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  Notification <span class="badge"><?php 
+                      include '../controllers/NotificationManager.php';
+                      echo sizeof(getNotificationsFor($_SESSION['user']['user_id']));
+                      ?> </span> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                <?php
+
+                      $notifications = getNotificationsFor($_SESSION['user']['user_id']);
+                      foreach ($notifications as $not) {
+                        echo '<li><a href="#">'. getNotification($not['task_id']).'</a></li>';
+                      }
+                ?>
+                </ul>
+              </div>
+              </div>
+
+
+
             </div>
+
+
+
+
               
               <?php
               if(isset($_GET['addScheduleTask'])){
@@ -88,6 +118,17 @@
                   }else if($_GET['removeUser'] == '0'){
                     echo '<div class="alert alert-error">
                             Use Account Remove Failed!
+                          </div>';   
+                  }
+                }
+                if(isset($_GET['editUser'])){
+                  if($_GET['editUser'] == '1'){
+                    echo '<div class="alert alert-success">
+                            User Account Saved!
+                          </div>';
+                  }else if($_GET['editUser'] == '0'){
+                    echo '<div class="alert alert-error">
+                            Use Account Edit Failed!
                           </div>';   
                   }
                 }
@@ -162,7 +203,7 @@
                 $(this).prop('readonly', false);
               });
               content.children("#edit").text(' Save ');
-              content.children("#edit").attr('onclick', 'saveForm(' + taskId + ')');
+              content.children("#edit").attr('onclick', 'saveForm(\'' + taskId + '\')');
               content.children("#edit").attr('id', 'save');
 
             }
@@ -175,7 +216,7 @@
               });
 
               content.children("#save").text(' Edit ');
-              content.children("#save").attr('onclick', 'editForm(' + taskId + ')');
+              content.children("#save").attr('onclick', 'editForm(\'' + taskId + '\')');
               content.children("#save").attr('id', 'edit');
               $("#" + taskId).submit();
             }
