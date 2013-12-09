@@ -2,7 +2,7 @@
 
 angular.module('maintenenceSchedulerApp', ['ui.calendar'])
 
-function CalendarCtrl($scope) {
+function CalendarCtrl($scope, $http) {
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
@@ -13,16 +13,7 @@ function CalendarCtrl($scope) {
             className: 'gcal-event',           // an option!
             currentTimezone: 'America/Chicago' // an option!
     };
-    /* event source that contains custom events on the scope */
-    $scope.events =[
-      {title: 'All Day Event',start: new Date(y, m, 1)},
-      {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
-      {id: 999,title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false},
-      {id: 999,title: 'Repeating Event',start: new Date(y, m, d + 4, 16, 0),allDay: false},
-      {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
-      {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'},
-      {title: 'Diehard Event',start: new Date(2013, 11, 20),allday:false}
-    ];
+
     /* event source that calls a function on every view switch */
     $scope.eventsF = function (start, end, callback) {
       var s = new Date(start).getTime() / 1000;
@@ -94,6 +85,27 @@ function CalendarCtrl($scope) {
         eventResize: $scope.alertOnResize
       }
     };
+
     /* event sources array*/
-    $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
+    $scope.eventSources = [$scope.eventSource];
+
+    /* event source that contains custom events on the scope */
+
+    $http({
+          url: '../controllers/scheduleController.php?type=calendarAdmin',
+          method: "GET",
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      }).success(function (data, status, headers, config) {
+            $scope.events = data;
+            console.log('DATA SUCCESS');
+            console.log(data);
+            console.log(status);
+            console.log(headers);
+            console.log(config);
+            $scope.tasks = data; // assign  $scope.persons here as promise is resolved here
+            $scope.eventSources.push($scope.events);
+          }).error(function (data, status, headers, config) {
+              $scope.status = status;
+              console.log('DATA FAILED');
+          });
 }

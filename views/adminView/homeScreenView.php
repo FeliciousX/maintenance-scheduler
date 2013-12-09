@@ -10,44 +10,16 @@
 		<p>Schedule</p></br>
 		<button class="btn btn-primary"> Generate Schedule</button></br></br>
 		<div class = "well">
-		 
+
 		</div>
-		 <?php 
+		 <?php
 #		  	include '../controllers/scheduleController.php';
 #		  	$scheduleCtrl = new scheduleController();
 #		  	$scheduleCtrl->adminCalendar();
 		  ?>
 		</br></br>
-		
-		<div ui-calendar="uiConfig.calendar" class="calendar" ng-model="eventSources"></div>
-		
-		
-		
-			 <div ng-controller="TestController">    
-				 <li ng-repeat="task in tasks">{{task.title}}</li>
-			</div>
-		<h1>ITS HERE</h1>
-		<script>
-		function TestController($scope, $http) {
-      $http({
-            url: '../controllers/scheduleController.php',
-            method: "POST",
-            data: {'type':'calendarAdmin'},
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function (data, status, headers, config) {
-        			console.log('DATA SUCCESS');
-        			console.log(data);
-        			console.log(status);
-        			console.log(headers);
-        			console.log(config);
-                $scope.tasks = data; // assign  $scope.persons here as promise is resolved here 
-            }).error(function (data, status, headers, config) {
-                $scope.status = status;
-                console.log('DATA FAILED');
-            });
 
-}
-		</script>
+		<div ui-calendar="uiConfig.calendar" class="calendar" ng-model="eventSources"></div>
 	</div>
 </div>
 
