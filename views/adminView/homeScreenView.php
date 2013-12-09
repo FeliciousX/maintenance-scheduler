@@ -7,16 +7,7 @@
 <link rel="stylesheet" href="../includes/css/fullcalendar.css" />
 <div ng-app="maintenenceSchedulerApp">
 	<div ng-controller="CalendarCtrl">
-		<p>Schedule</p></br>
 		<button class="btn btn-primary"> Generate Schedule</button></br></br>
-		<div class = "well">
-
-		</div>
-		 <?php
-#		  	include '../controllers/scheduleController.php';
-#		  	$scheduleCtrl = new scheduleController();
-#		  	$scheduleCtrl->adminCalendar();
-		  ?>
 		</br></br>
 
 		<div ui-calendar="uiConfig.calendar" class="calendar" ng-model="eventSources"></div>
